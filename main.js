@@ -16,7 +16,7 @@ console.log(data.body);
 var c = JSON.parse(data.body).Countries;
 var country, newConfirmed, totalConfirmed, newDeaths, totalDeaths, newRecovered, totalRecovered;
 for(var i in c) {
-  country = c[i].Country;
+  /*country = c[i].Country;
   newConfirmed = c[i].NewConfirmed;
   totalConfirmed = c[i].TotalConfirmed;
   newDeaths = c[i].NewDeaths;
@@ -33,12 +33,12 @@ for(var i in c) {
     " New recovered " + newRecovered + '\n' + 
     " Total recovered " + totalRecovered + '\n' +
     "----------------------------------------------------------------" 
-  );
+  );*/
 }
 io.on('connection', function (socket){
   console.log('connection');
   socket.on('d', function (from, msg) {
     console.log('MSG', from, ' saying ', msg);
   });
-  socket.emit('data', data);
+  socket.emit('data', data.body);
 });
