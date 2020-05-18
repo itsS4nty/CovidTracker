@@ -12,33 +12,7 @@ const server = app.listen(app.get('port'), () => {
 var io = require('socket.io')(server);
 
 var data = requestSync.sync("https://api.covid19api.com/summary");
-console.log(data.body);
-var c = JSON.parse(data.body).Countries;
-var country, newConfirmed, totalConfirmed, newDeaths, totalDeaths, newRecovered, totalRecovered;
-for(var i in c) {
-  /*country = c[i].Country;
-  newConfirmed = c[i].NewConfirmed;
-  totalConfirmed = c[i].TotalConfirmed;
-  newDeaths = c[i].NewDeaths;
-  totalDeaths = c[i].TotalDeaths;
-  newRecovered = c[i].NewRecovered;
-  totalRecovered = c[i].TotalRecovered;
-  // Show data of each country
-  console.log(
-    "----------------------------------------------------------------" + '\n' + 
-    " " + country + '\n' + " New confirmed " + newConfirmed + '\n' + 
-    " Total confirmed " + totalConfirmed + '\n' +
-    " New deaths " + newDeaths + '\n' + 
-    " Total deaths " + totalDeaths + '\n' + 
-    " New recovered " + newRecovered + '\n' + 
-    " Total recovered " + totalRecovered + '\n' +
-    "----------------------------------------------------------------" 
-  );*/
-}
 io.on('connection', function (socket){
   console.log('connection');
-  socket.on('d', function (from, msg) {
-    console.log('MSG', from, ' saying ', msg);
-  });
   socket.emit('data', data.body);
 });

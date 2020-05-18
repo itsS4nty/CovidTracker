@@ -4,10 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="/socket.io/socket.io.js"></script>
+    <script src="functions.js"></script>
     <script src="test.js"></script>
     <title>Covid Tracker</title>
 </head>
 <body>
-    <h1>hola</h1>
+    <div id="container">
+        <a href="#" onclick="showInfo()" id="infoButton">Show info of countries</a>
+        <div id="countries" style="display: none;">
+
+        </div>
+    </div>
 </body>
 </html>
