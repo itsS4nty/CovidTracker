@@ -6,6 +6,9 @@ socket.on('data', function(data) {
   var c = JSON.parse(data).Countries;
   var container = document.getElementById('countries');
   var country, newConfirmed, totalConfirmed, newDeaths, totalDeaths, newRecovered, totalRecovered;
+  c.sort(function (a, b) {
+    return b.TotalConfirmed - a.TotalConfirmed;
+  });
   for(var i in c) {
     country = c[i].Country;
     console.log(country);
